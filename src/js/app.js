@@ -44,9 +44,69 @@ let BigDice23	=	[N, O, O, T, U, W];
 let BigDice24	=	[O, O, O, T, T, U];
 let BigDice25	=	[C, E, I, I, T, T];
 
-function rollTheDice() {
+const REGULAR_BOOG = [
+  Dice1, Dice2, 
+  Dice3, Dice4, 
+  Dice5, Dice6, 
+  Dice7, Dice8, 
+  Dice9, Dice10, 
+  Dice11, Dice12, 
+  Dice13, Dice14, 
+  Dice15, Dice16
+];
+const BIG_BOOG = [
+  BigDice1, BigDice2,
+  BigDice3, BigDice3,
+  BigDice4, BigDice5, 
+  BigDice5, BigDice6,
+  BigDice7, BigDice8,
+  BigDice9, BigDice10,
+  BigDice11, BigDice12,
+  BigDice13, BigDice14,
+  BigDice15, BigDice16,
+  BigDice17, BigDice18,
+  BigDice19, BigDice20,
+  BigDice21, bigDice22,
+  BigDice23, BigDice24,
+  BigDice25
+];
 
+function select(selector, scope = document) {
+  return scope.querySelector(selector);
 }
-function moveTheDice() {
 
+function selectAll(selector, scope = document) {
+  return scope.querySelectorAll(selector);
+}
+function listen(event, element, callback) {
+  return element.addEventListener(event, callback);
+}
+function getRandomItem(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+function create(element) {
+  const newElement = document.createElement(element); 
+  return newElement;
+}
+function shuffle(diceArr) {
+  const shuffledArr = [...deck]; 
+  for (let i = shuffledDeck.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledArr[i], shuffledArr[j]] = [shuffledArr[j], shuffledArr[i]]; 
+  }
+  return shuffledArr;
+}
+
+function shuffleTheBoard(diceArr) {
+  let shuffledBoard = shuffle(diceArr);
+  shuffledBoard.forEach(cell => {
+    const p = create("p");
+    p.textContent = rollTheDice(cell);
+    p.classList.add("grid-item");
+    grid.appendChild(p);
+});
+}
+
+function rollTheDice(dieArr) {
+  getRandomItem(dieArr);
 }
