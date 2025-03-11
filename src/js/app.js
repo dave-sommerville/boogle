@@ -78,6 +78,8 @@ const StartGame = select(".start");
 const Toggle = select(".toggle");
 const GameName = select(".name");
 const GameRunning = REGULAR_BOOG;
+const timer = select('.timer');
+let maxTime = 60;  
 
 function selectAll(selector, scope = document) {
   return scope.querySelectorAll(selector);
@@ -100,24 +102,23 @@ function shuffle(diceArr) {
   }
   return shuffledArr;
 }
-
 function shuffleTheBoard(diceArr) {
+  GameBoard.innerHTML = "";
   let shuffledBoard = shuffle(diceArr);
   shuffledBoard.forEach(cell => {
     const p = create("p");
     p.textContent = getRandomItem(cell);
     p.classList.add("grid-item");
     GameBoard.appendChild(p);
-});
+  });
 }
-
 function GameSize() {
   if (GameRunning = REGULAR_BOOG) {
     GameRunning = BIG_BOOG;
-    GameName.innerText = "Big Boogle";
+    return false;
   } else {
     GameRunning = REGULAR_BOOG;
-    GameName.innerText = "Regular Boogle"
+    return true;
   }
 }
 
@@ -127,4 +128,44 @@ function GameSize() {
 
 listen("click", StartGame, () =>{
   shuffleTheBoard(REGULAR_BOOG);
+  startTimer();
 });
+
+/*-------------------------------------------------------------------------->
+	TIMER
+<--------------------------------------------------------------------------*/
+let startTime = new Date();  
+let timerInterval; 
+let gameOver = false;
+
+function updateTimer() {
+  const remainingTime = maxTime - Math.floor((new Date() - startTime) / 1000);
+  const formattedTime = remainingTime < 10 ? `0${remainingTime}` : remainingTime;
+
+  if (remainingTime <= 0) {
+    timer.innerText = '00';
+  } else {
+    timer.innerText = formattedTime;
+  }
+}
+
+function startTimer() {
+  startTime = new Date();  
+  timer.innerText = '60'; 
+  gameOver = false; 
+
+  timerInterval = setInterval(() => {
+    if (gameOver) {
+      clearInterval(timerInterval); 
+      return;
+    }
+    const remainingTime = maxTime - Math.floor((new Date() - startTime) / 1000);
+    if (remainingTime <= 0) {
+      gameOver = true;
+      clearInterval(timerInterval);  
+      updateTimer(); 
+    } else {
+      updateTimer();  
+    }
+  }, 1000);  
+}

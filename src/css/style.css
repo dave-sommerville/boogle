@@ -7,7 +7,6 @@ main {
   display: flex;
   flex-direction: column;
 }
-
 .flex {
   display: flex;
 }
@@ -34,25 +33,21 @@ main {
   cursor: pointer;
   transition: background 0.3s ease;
 }
-
 .styled-button:hover {
   background-color: #2980b9;
 }
 
-/* Toggle Switch */
 .toggle-switch {
   position: relative;
   display: inline-block;
   width: 100px;
   height: 52px;
 }
-
 .toggle-switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
-
 .slider {
   position: absolute;
   cursor: pointer;
@@ -64,7 +59,6 @@ main {
   transition: 0.4s;
   border-radius: 52px;
 }
-
 .slider::before {
   content: "";
   position: absolute;
@@ -76,18 +70,12 @@ main {
   transition: 0.4s;
   border-radius: 50%;
 }
-
-/* When checked */
 input:checked + .slider {
   background-color: #3498db;
 }
-
 input:checked + .slider::before {
   transform: translateX(48px);
 }
-
-
-
 .letter-display {
   width: 80svh;
   height: 80svh;
