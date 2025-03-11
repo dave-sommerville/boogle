@@ -74,8 +74,10 @@ const BIG_BOOG = [
   BigDice25
 ];
 const GameBoard = select(".letter-display");
-
-
+const StartGame = select(".start");
+const Toggle = select(".toggle");
+const GameName = select(".name");
+const GameRunning = REGULAR_BOOG;
 
 function selectAll(selector, scope = document) {
   return scope.querySelectorAll(selector);
@@ -109,4 +111,20 @@ function shuffleTheBoard(diceArr) {
 });
 }
 
-shuffleTheBoard(REGULAR_BOOG);
+function GameSize() {
+  if (GameRunning = REGULAR_BOOG) {
+    GameRunning = BIG_BOOG;
+    GameName.innerText = "Big Boogle";
+  } else {
+    GameRunning = REGULAR_BOOG;
+    GameName.innerText = "Regular Boogle"
+  }
+}
+
+// listen("change", Toggle, () =>{
+//   GameSize();
+// });
+
+listen("click", StartGame, () =>{
+  shuffleTheBoard(REGULAR_BOOG);
+});
