@@ -1,4 +1,13 @@
 'use strict';
+
+/*
+  - Export constants 
+  - Set countdown
+  - Set game timer
+  - Add alarm 
+  - Toggle switch 
+  - Game type display
+*/
 function select(selector, scope = document) {
   return scope.querySelector(selector);
 }
