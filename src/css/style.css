@@ -1,5 +1,7 @@
 @charset "utf-8";
-
+body {
+  position: relative;
+}
 main {
   display: flex;
   align-items: center;
@@ -7,6 +9,7 @@ main {
 }
 
 .btn-wrapper {
+  width: 125px;
   display: flex;
   flex-direction: column;
   height: 150px;
@@ -43,6 +46,7 @@ h1 {
   grid-template-rows: repeat(4, 1fr);     
   gap: 10px;
   border-radius: 15px;
+  margin-right: 150px;
 }
 .grid-item {
   background-color: #f9fffb;
@@ -59,6 +63,22 @@ h1 {
 .timer {
   font-size: 5rem;
 }
+/*------------------------------------------------>
+  Brand Footer 
+<------------------------------------------------*/
+
+footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  z-index: 1000;
+  img {
+    width: 200px;
+  }
+}
+
 @media (max-width: 1000px) {
   .letter-display {
     width: 70svw;
